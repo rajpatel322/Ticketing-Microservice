@@ -2,3 +2,4 @@ client/node_modules
 auth/node_modules
 client/.next
 tickets/node_modules
+common
