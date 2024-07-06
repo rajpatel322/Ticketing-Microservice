@@ -3,8 +3,7 @@ import { body } from 'express-validator';
 
 import { User } from '../models/user';
 import { Password } from '../hashing/password';
-import { validationRequest } from '../middlewares/validate-request';
-import { BadRequestError } from '../errors/bad-request-error';
+import { validationRequest, BadRequestError } from '@rpateltickets/common';
 import jwt from 'jsonwebtoken';
 
 
