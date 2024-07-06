@@ -7,7 +7,7 @@ const Header = ({currentUser}) => {
         !currentUser && {label: 'Sign In', href: '/auth/signin'},
         currentUser && {label: 'Sign Out', href: '/auth/signout'},
     ].filter(linkConfig => linkConfig).map(({label, href}) => {
-        return <li className='"nav-item'>
+        return <li className='"nav-item' key={href}>
             <Link href = {href} className='nav-link'>
                 {label}
             </Link>

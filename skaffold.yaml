@@ -3,8 +3,8 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/*
-build:
+      - ./infra/k8s/* # location of all the deployment files to apply the deployment and delete them
+build: # Docker build
   local:
     push: false
   # googleCloudBuild:
@@ -25,4 +25,12 @@ build:
       sync:
         manual:
           - src: '**/*.ts'
+            dest: .
+    - image: rpate467/tickets #us.gcr.io/ticketing-dev-425721/auth
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
             dest: .
