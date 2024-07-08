@@ -29,7 +29,7 @@ it('fails when a emaol that does not exist is supplied', async () => {
         .expect(400);
 });
 
-it('fails when a emaol that does not exist is supplied', async () => {
+it('fails when a email that does not exist is supplied', async () => {
     await request(app)
         .post('/api/users/signup')
         .send({

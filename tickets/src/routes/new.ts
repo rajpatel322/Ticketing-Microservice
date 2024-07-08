@@ -1,11 +1,25 @@
 import express, {NextFunction, Request, Response} from 'express';
-import { requireAuth } from '@rpateltickets/common';
-
+import { requireAuth, validationRequest } from '@rpateltickets/common';
+import { body } from 'express-validator';
+import { Ticket } from '../models/ticket';
 
 const createTicketRouter = express.Router();
 
-createTicketRouter.post('/api/tickets', requireAuth, (req: Request, res: Response, next: NextFunction) => {
-    res.sendStatus(200);
+createTicketRouter.post('/api/tickets', requireAuth, [
+    body('title').not().isEmpty().withMessage('Title is required'),
+    body('price').isFloat({ gt: 0 }).withMessage('Price must be greater than zero')
+], validationRequest, async (req: Request, res: Response, next: NextFunction) => {
+    const {title, price} = req.body;
+
+    const ticket = Ticket.build({
+        title,
+        price,
+        userId: req.currentUser!.id
+    });
+
+    await ticket.save();
+
+    res.status(201).send(ticket);
 });
 
 export default createTicketRouter
