@@ -34,3 +34,11 @@ build: # Docker build
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: rpate467/orders #us.gcr.io/ticketing-dev-425721/auth
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .

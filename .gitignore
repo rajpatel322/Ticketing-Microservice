@@ -4,3 +4,4 @@ client/.next
 tickets/node_modules
 common
 nats-test
+orders/node_modules

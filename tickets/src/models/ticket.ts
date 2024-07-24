@@ -1,20 +1,20 @@
 import mongoose, { mongo } from "mongoose";
 
+// Attributes required to create a new Ticket
 interface TicketAttrs {
     title: string,
     price: number,
     userId: string
 }
 
-//  Properties that TS allowed to access
-interface TicketDoc extends mongoose.Document{
+// Properties that a Ticket document has
+interface TicketDoc extends mongoose.Document {
     title: string,
     price: number,
     userId: string
 }
 
-
-// adding custom method to the MongoDB schema
+// Interface to define custom methods on the Ticket model
 interface TicketModel extends mongoose.Model<TicketDoc> {
     build(attrs: TicketAttrs): TicketDoc;
 }
@@ -31,9 +31,9 @@ const ticketSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
-    },
+    }
 }, {
-    toJSON : {
+    toJSON: {
         transform(doc, ret) {
             ret.id = ret._id;
             delete ret._id;
@@ -41,11 +41,11 @@ const ticketSchema = new mongoose.Schema({
     }
 });
 
+// Adding a custom method to the schema to create a new Ticket
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
     return new Ticket(attrs);
 };
 
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 
-export {Ticket};
-
+export { Ticket };
