@@ -1,6 +1,7 @@
 import mongoose, { mongo } from 'mongoose';
 import { OrderStatus } from '@rpateltickets/common';
 import { TicketDoc } from './ticket';
+
 // attributes
 interface OrderAttrs {
     userId: string;
@@ -16,6 +17,7 @@ interface OrderDoc extends mongoose.Document {
     status: OrderStatus;
     expiresAt: Date;
     ticket: TicketDoc;
+    version: number
 }
 
 // interface to define custom methods on the Order model

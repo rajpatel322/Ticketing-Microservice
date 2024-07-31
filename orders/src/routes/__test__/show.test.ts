@@ -1,11 +1,12 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 
 it('retriving all the tickets for particular user', async ()=> {
     // Create a ticket
     const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20
     });
@@ -45,6 +46,7 @@ it('returns 404 error when ticket is not found in database', async ()=> {
 it('returns 401 error for unauthorized user', async ()=> {
     // Create a ticket
     const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'Concert',
         price: 20
     });

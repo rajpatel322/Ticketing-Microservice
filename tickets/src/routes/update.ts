@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
-import { validationRequest, NotAuthorizedError, requireAuth, NotFoundError } from '@rpateltickets/common';
+import { validationRequest, NotAuthorizedError, requireAuth, NotFoundError, BadRequestError } from '@rpateltickets/common';
 import { natsWrapper } from '../nats-wrapper';
 import { TicketUpdatedPublisher } from '../events/publisher/ticket-updated-publisher';
 
@@ -16,6 +16,10 @@ router.put('/api/tickets/:id',requireAuth, [
 
     if(!ticket) {
         throw new NotFoundError();
+    }
+
+    if(ticket.orderId) {
+        throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     if(ticket.userId !== req.currentUser!.id) {
@@ -33,6 +37,7 @@ router.put('/api/tickets/:id',requireAuth, [
         id: ticket.id,
         title: ticket.title,
         price: ticket.price,
+        version: ticket.version,
         userId: ticket.userId
     })
 

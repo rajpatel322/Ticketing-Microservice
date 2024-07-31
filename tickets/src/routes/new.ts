@@ -22,9 +22,10 @@ createTicketRouter.post('/api/tickets', requireAuth, [
     await ticket.save();
     await new TicketCreatedPublisher(natsWrapper.client).publish({
         id: ticket.id,
-        title: ticket.title,
+        title: ticket.title, // want to use ticket.title instead of title variable since mongoose configure the the string according to it's way
         price: ticket.price,
-        userId: ticket.userId
+        userId: ticket.userId,
+        version: ticket.version
     })
 
     res.status(201).send(ticket);
