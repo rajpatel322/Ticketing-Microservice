@@ -1,7 +1,7 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 import { OrderStatus } from '@rpateltickets/common';
 import { TicketDoc } from './ticket';
-
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 // attributes
 interface OrderAttrs {
     userId: string;
@@ -48,6 +48,9 @@ const orderSchema = new mongoose.Schema({
             delete ret._id;
         }
 }});
+
+orderSchema.set('versionKey', 'version');
+orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
     return new Order(attrs);

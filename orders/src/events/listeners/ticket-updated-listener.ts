@@ -21,8 +21,8 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
             price: price
         });
         
-        await ticket.save();
-
+        await ticket.save(); // this will call the update-if-current plug in to increment the version
+        
         msg.ack();
     }
 }

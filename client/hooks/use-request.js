@@ -2,13 +2,15 @@ import axios from 'axios';
 import {useState} from 'react';
 
 
-const request = ({url, method, body, onSuccess}) => {
+const useRequest = ({url, method, body, onSuccess}) => {
     const [errors, setErrors] = useState(null);
 
-    const  doRequest = async () => {
+    const  doRequest = async (props = {}) => {
         try {
             setErrors(null);
-            const response = await axios[method](url, body);
+            const response = await axios[method](url,
+                {...body, ...props} // using ... we can extract the properties from body and props in a flat object. Don't do {body, props}
+            )
             if(onSuccess) {
                 onSuccess(response.data);
             }
@@ -27,4 +29,4 @@ const request = ({url, method, body, onSuccess}) => {
     return {doRequest, errors};
 }
 
-export default request;
+export default useRequest;

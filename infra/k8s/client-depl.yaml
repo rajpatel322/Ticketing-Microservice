@@ -15,6 +15,13 @@ spec:
       containers:
         - name: client
           image: rpate467/client
+          env:
+            - name: NEXT_PUBLIC_STRIPE_PUB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-key-secret
+                  key: STRIPE_PUB_KEY
+
 ---
 apiVersion: v1
 kind: Service

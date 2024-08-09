@@ -1,4 +1,4 @@
-import mongoose, { mongo, version } from 'mongoose';
+import mongoose from 'mongoose';
 import { Order } from './orders';
 import { OrderStatus } from '@rpateltickets/common';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
@@ -55,6 +55,7 @@ Ticketschema.statics.findByEvent = (event: {id : string, version: number}) => {
 };
 
 Ticketschema.statics.build = (attrs:TicketAttrs) => {
+    // can't do return new Ticket(attrs) since 
     return new Ticket({
         _id: attrs.id,
         title: attrs.title,

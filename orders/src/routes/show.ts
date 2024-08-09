@@ -15,7 +15,6 @@ router.get('/api/orders/:orderId', requireAuth, async (req: Request, res:Respons
         throw new NotAuthorizedError();
     }
 
-
     res.send(order);
 });
 
