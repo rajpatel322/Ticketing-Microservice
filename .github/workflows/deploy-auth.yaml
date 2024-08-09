@@ -3,7 +3,7 @@ name: deply-auth
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'auth/**'
 
