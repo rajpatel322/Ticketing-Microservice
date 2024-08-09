@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tickets
-          image: rpate467/tickets # us.gcr.io/ticketing-dev-425721/auth
+          image: rajkpatel10/tickets # us.gcr.io/ticketing-dev-425721/auth
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

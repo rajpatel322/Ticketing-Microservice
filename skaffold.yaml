@@ -10,7 +10,7 @@ build: # Docker build
   # googleCloudBuild:
   #   projectId: ticketing-dev-425721
   artifacts:
-    - image: rpate467/auth #us.gcr.io/ticketing-dev-425721/auth
+    - image: rajkpatel10/auth #us.gcr.io/ticketing-dev-425721/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +18,7 @@ build: # Docker build
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: rpate467/client #us.gcr.io/ticketing-dev-425721/auth
+    - image: rajkpatel10/client #us.gcr.io/ticketing-dev-425721/auth
       context: client
       docker:
         dockerfile: Dockerfile
@@ -26,7 +26,7 @@ build: # Docker build
         manual:
           - src: '**/*.ts'
             dest: .
-    - image: rpate467/tickets #us.gcr.io/ticketing-dev-425721/auth
+    - image: rajkpatel10/tickets #us.gcr.io/ticketing-dev-425721/auth
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -34,7 +34,7 @@ build: # Docker build
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: rpate467/orders #us.gcr.io/ticketing-dev-425721/auth
+    - image: rajkpatel10/orders #us.gcr.io/ticketing-dev-425721/auth
       context: orders
       docker:
         dockerfile: Dockerfile
@@ -42,7 +42,7 @@ build: # Docker build
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: rpate467/expiration
+    - image: rajkpatel10/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -50,7 +50,7 @@ build: # Docker build
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: rpate467/payments
+    - image: rajkpatel10/payments
       context: payments
       docker:
         dockerfile: Dockerfile

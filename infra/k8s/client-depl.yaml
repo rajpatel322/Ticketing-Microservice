@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: rpate467/client
+          image: rajkpatel10/client
           env:
             - name: NEXT_PUBLIC_STRIPE_PUB_KEY
               valueFrom:
