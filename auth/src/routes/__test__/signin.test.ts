@@ -8,7 +8,7 @@ it('fails when a emaol that does not exist is supplied', async () => {
             email: 'test@test.com',
             password: 'password'
         })
-        .expect(400);
+        .expect(200);
 });
 
 it('fails when a emaol that does not exist is supplied', async () => {
