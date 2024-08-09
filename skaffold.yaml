@@ -4,6 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/* # location of all the deployment files to apply the deployment and delete them
+      - ./infra/k8s-dev/*
 build: # Docker build
   local:
     push: false
