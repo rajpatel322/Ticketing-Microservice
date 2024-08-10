@@ -5,7 +5,6 @@ import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
 
 const start = async () => {
-	console.log("Starting Payment Service");
 
 	if (!process.env.JWT_KEY) {
 		throw new Error("JWT_KEY must be defined");
