@@ -14,7 +14,7 @@ createTicketRouter.post('/api/tickets', requireAuth, [
     const {title, price} = req.body;
 
     if(price > 999999.99) {
-        throw new BadRequestError('Cannot edit a reserved ticket');
+        throw new BadRequestError('Price must not exceed $999,999.99');
     }
 
     const ticket = Ticket.build({
