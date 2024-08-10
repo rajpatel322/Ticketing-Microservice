@@ -5,10 +5,10 @@ const Header = ({currentUser}) => {
     const Links = [
         ! currentUser && {label: 'Sign up', href: '/auth/signup'},
         !currentUser && {label: 'Sign In', href: '/auth/signin'},
+        {label: 'Home', href: '/'},
         currentUser && {label: 'Sell Tickets', href: 'tickets/new'},
         currentUser && {label: 'My Orders', href: '/orders'},
         currentUser && {label: 'Sign Out', href: '/auth/signout'},
-        {label: 'Home', href: '/'},
 
     ].filter(linkConfig => linkConfig).map(({label, href}) => {
         return <li className='"nav-item' key={href}>
