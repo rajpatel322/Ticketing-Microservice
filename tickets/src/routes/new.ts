@@ -1,5 +1,5 @@
 import express, {NextFunction, Request, Response} from 'express';
-import { requireAuth, validationRequest } from '@rpateltickets/common';
+import { BadRequestError, requireAuth, validationRequest } from '@rpateltickets/common';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
 import { TicketCreatedPublisher } from '../events/publisher/ticket-created-publisher';
@@ -12,6 +12,10 @@ createTicketRouter.post('/api/tickets', requireAuth, [
     body('price').isFloat({ gt: 0 }).withMessage('Price must be greater than zero')
 ], validationRequest, async (req: Request, res: Response, next: NextFunction) => {
     const {title, price} = req.body;
+
+    if(price > 999999.99) {
+        throw new BadRequestError('Cannot edit a reserved ticket');
+    }
 
     const ticket = Ticket.build({
         title,
