@@ -8,6 +8,8 @@ const Header = ({currentUser}) => {
         currentUser && {label: 'Sell Tickets', href: 'tickets/new'},
         currentUser && {label: 'My Orders', href: '/orders'},
         currentUser && {label: 'Sign Out', href: '/auth/signout'},
+        {label: 'Home', href: '/'},
+
     ].filter(linkConfig => linkConfig).map(({label, href}) => {
         return <li className='"nav-item' key={href}>
             <Link href = {href} className='nav-link'>
@@ -19,7 +21,7 @@ const Header = ({currentUser}) => {
     return (
         <nav className="navbar bg-dark" data-bs-theme="dark" >
             <Link href="/" className='navbar-brand'>
-                TicketMaster
+                TicketPatel
             </Link>
 
             <div>
