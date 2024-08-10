@@ -16,7 +16,7 @@ const LandingPage = ({ currentUser, tickets }) => {
 	});
 
     return (<div className="container text-center">
-            <h2>Tickets</h2>
+            <h1>Tickets</h1>
                 <table className="table table-dark table-bordered table-hover">
                     <thead>
                         <tr>
