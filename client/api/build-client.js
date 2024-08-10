@@ -4,7 +4,7 @@ const buildClient = ({req}) => {
     if(typeof window === 'undefined') {
         return axios.create({
 
-            baseURL: 'http://www.ticketpatel.xyz',
+            baseURL: 'www.ticketpatel.xyz/',
             headers: req.headers
         })
     } else {
