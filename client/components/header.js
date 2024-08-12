@@ -20,6 +20,7 @@ const Header = ({currentUser}) => {
 
     return (
         <nav className="navbar bg-dark" data-bs-theme="dark" >
+            <div className='container-fluid'>
             <Link href="/" className='navbar-brand'>
                 TicketPatel
             </Link>
@@ -29,6 +30,8 @@ const Header = ({currentUser}) => {
                     {Links}
                 </ul>
             </div>
+            </div>
+            
         </nav>
     )
 }

@@ -43,12 +43,15 @@ const OrderShow = ({order, currentUser}) => {
 
 
 
-    return <div>
+    return <div className="container text-wrap">
         <h1>
             Time left to pay: {timeLeft.minutes}m {timeLeft.seconds}s
         </h1>
         <StripeCheckout token={(token) => doRequest({token:token.id})} stripeKey={process.env.NEXT_PUBLIC_STRIPE_PUB_KEY}
         amount = {order.ticket.price * 100} email = {currentUser.email} />
+        <p className="text-danger font-weight-bold">
+            **NOTE** enter 4242 4242 4242 4242 for the credit card number, 10/30 for the expiration date, and random 3 CVC. I used Stripe Developer mode so no payment will be made or charged 
+        </p>
         {errors}
         </div>;
 };
