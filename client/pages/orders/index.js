@@ -1,6 +1,5 @@
 const OrderIndex = ({orders}) => {
     const OrderList = orders.map((o) => {
-        
 		if (o.status === "complete") {
             return (
                 <tr key={o.id}>
