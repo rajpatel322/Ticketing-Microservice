@@ -3,6 +3,8 @@ import { natsWrapper } from './nats-wrapper';
 
 
 const start = async () => {
+    console.log("Starting Expiration....in..3....2....1");
+
     if(!process.env.NATS_CLIENT_ID) {
         throw new Error("NATS_CLIENT_ID must be defined");
     }
