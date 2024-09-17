@@ -1,11 +1,21 @@
 const OrderIndex = ({orders}) => {
     const OrderList = orders.map((o) => {
-		return (
-            <tr key={o.id} >
-                <td className="bg-success">{o.ticket.title}</td>
-                <td className="bg-success">{o.status}</td>
-            </tr>
-		);
+        
+		if (o.status === "complete") {
+            return (
+                <tr key={o.id}>
+                    <td className="bg-success">{o.ticket.title}</td>
+                    <td className="bg-success">{o.status}</td>
+                </tr>
+            );
+        } else {
+            return (
+                <tr key={o.id}>
+                    <td className="bg-danger">{o.ticket.title}</td>
+                    <td className="bg-danger">{o.status}</td>
+                </tr>
+            );
+        }
 	});
 
     return (<div className="container text-center">
